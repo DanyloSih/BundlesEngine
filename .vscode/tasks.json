@@ -1,0 +1,145 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Debug",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "BUILD_TYPE=Debug"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "Build Release",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "BUILD_TYPE=Release"
+            ],
+            "group": "build",
+            "problemMatcher": ["$gcc"],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "Clean",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "clean"
+            ],
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "Clean and Build Debug",
+            "type": "shell",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Clean",
+                "Build Debug"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Clean and Build Release",
+            "type": "shell",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Clean",
+                "Build Release"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Rebuild Library",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "rebuild-${input:libraryName}"
+            ],
+            "problemMatcher": ["$gcc"],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "Build Libraries Only",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "libs",
+                "BUILD_TYPE=Debug"
+            ],
+            "problemMatcher": ["$gcc"],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "Run Debug",
+            "type": "shell",
+            "command": "${command:cmake.launchTargetPath}",
+            "windows": {
+                "command": ".\\builds\\Windows\\Debug\\BundlesEngine.exe"
+            },
+            "linux": {
+                "command": "./builds/Linux/Debug/BundlesEngine"
+            },
+            "osx": {
+                "command": "./builds/macOS/Debug/BundlesEngine"
+            },
+            "dependsOn": ["Build Debug"],
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            }
+        },
+        {
+            "label": "Run Release",
+            "type": "shell",
+            "windows": {
+                "command": ".\\builds\\Windows\\Release\\BundlesEngine.exe"
+            },
+            "linux": {
+                "command": "./builds/Linux/Release/BundlesEngine"
+            },
+            "osx": {
+                "command": "./builds/macOS/Release/BundlesEngine"
+            },
+            "dependsOn": ["Build Release"],
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            }
+        }
+    ],
+    "inputs": [
+        {
+            "id": "libraryName",
+            "type": "promptString",
+            "description": "Enter library name to rebuild (e.g., lua)",
+            "default": "lua"
+        }
+    ]
+}

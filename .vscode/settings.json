@@ -1,0 +1,67 @@
+{
+    // Files
+    "files.associations": {
+        "*.c": "c",
+        "*.h": "c",
+        "Makefile": "makefile",
+        "*.mk": "makefile"
+    },
+    "files.exclude": {
+        "**/builds": false
+    },
+
+    // Editor
+    "editor.formatOnSave": true,
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": true,
+
+    // C/C++ Extension
+    "C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools",
+    "C_Cpp.errorSquiggles": "enabled",
+    "C_Cpp.intelliSenseEngine": "default",
+    "C_Cpp.codeAnalysis.clangTidy.enabled": false,
+
+    // Makefile Tools Extension
+    "makefile.extensionOutputFolder": "./.vscode",
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "${workspaceFolder}",
+            "binaryPath": "${workspaceFolder}/builds/Linux/Debug/BundlesEngine",
+            "binaryArgs": []
+        }
+    ],
+    "makefile.configurations": [
+        {
+            "name": "Debug",
+            "makeArgs": [
+                "BUILD_TYPE=Debug"
+            ]
+        },
+        {
+            "name": "Release",
+            "makeArgs": [
+                "BUILD_TYPE=Release"
+            ]
+        }
+    ],
+    "makefile.buildLog": "${workspaceFolder}/.vscode/build.log",
+
+    // Terminal
+    "terminal.integrated.defaultProfile.windows": "Command Prompt",
+    "terminal.integrated.profiles.windows": {
+        "MinGW": {
+            "path": "C:\\MinGW\\bin\\bash.exe",
+            "args": ["-l"]
+        }
+    },
+
+    // Search
+    "search.exclude": {
+        "**/builds": true,
+        "**/.vscode": true
+    },
+
+    // Git
+    "git.ignoreLimitWarning": true
+}

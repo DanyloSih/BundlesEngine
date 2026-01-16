@@ -1,0 +1,11 @@
+{
+    "recommendations": [
+        "ms-vscode.cpptools",
+        "ms-vscode.cpptools-extension-pack",
+        "ms-vscode.makefile-tools",
+        "twxs.cmake",
+        "jeff-hykin.better-c-syntax",
+        "hars.cppsnippets",
+        "formulahendry.code-runner"
+    ]
+}

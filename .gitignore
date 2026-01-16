@@ -1,0 +1,15 @@
+*.o
+*.i
+*.s
+*.exe
+*.out
+a.out
+*.a
+*.so
+*.dylib
+*.dll
+*.gch
+build/
+bin/
+*.dSYM/
+compile_commands.json
